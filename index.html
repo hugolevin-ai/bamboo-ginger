@@ -2,7 +2,7 @@
 <html lang="zh-TW" class="scroll-smooth overflow-x-hidden">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
   <title>二林傳承 · 竹薑食養 | 一碗傳承溫度的竹薑茶碗蒸</title>
   <meta name="description" content="傳承老手藝，驅寒培本的日常食養。取自然之土，借老手藝之暖，以純淨活氫水與在地竹薑喚醒身體自癒活力。">
   <meta name="theme-color" content="#FAF7F2">
@@ -37,9 +37,9 @@
             wabi: {
               cream: '#FAF7F2', // 米杏底色
               sand: '#F2ECE1',  // 溫潤淺褐
-              border: '#E5DCce',// 侘寂陶土邊框
-              linen: '#786F66', // 灰褐麻布色
-              ink: '#2D2926',   // 墨黑色
+              border: '#E8DEC8',// 侘寂陶土邊框
+              linen: '#6E665D', // 灰褐麻布色（加深提升手機對比度）
+              ink: '#26221F',   // 墨黑色
             }
           },
           fontFamily: {
@@ -57,46 +57,48 @@
     }
     html, body {
       background-color: #FAF7F2;
-      color: #2D2926;
+      color: #26221F;
       font-family: 'Noto Sans TC', sans-serif;
       overflow-x: hidden;
       width: 100%;
+      -webkit-font-smoothing: antialiased;
     }
     .font-serif-title {
       font-family: 'Noto Serif TC', serif;
     }
     .pattern-wabi {
       background-image: radial-gradient(#D49B38 0.65px, transparent 0.65px);
-      background-size: 24px 24px;
-      opacity: 0.12;
+      background-size: 20px 20px;
+      opacity: 0.10;
     }
+    /* iOS 全面屏底部安全邊距 */
     .pb-safe {
-      padding-bottom: env(safe-area-inset-bottom, 16px);
+      padding-bottom: calc(env(safe-area-inset-bottom, 12px) + 8px);
     }
   </style>
 </head>
-<body class="antialiased selection:bg-ginger-200 selection:text-ginger-900 flex flex-col min-h-screen pb-20 md:pb-0">
+<body class="antialiased selection:bg-ginger-200 selection:text-ginger-900 flex flex-col min-h-screen pb-24 md:pb-0">
 
   <!-- ========================================================= -->
-  <!-- 1. 【頂部導覽列 (Sticky Navbar)】 -->
+  <!-- 1. 【頂部導覽列 (Sticky Navbar)】 (精簡手機頂欄、防止文字擁擠) -->
   <!-- ========================================================= -->
-  <header class="sticky top-0 z-50 bg-[#FAF7F2]/95 backdrop-blur-md border-b border-wabi-border/70 transition-all duration-300">
+  <header class="sticky top-0 z-50 bg-[#FAF7F2]/95 backdrop-blur-md border-b border-wabi-border/80 transition-all duration-300">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex items-center justify-between h-16 sm:h-20">
-        <!-- 左側品牌 -->
-        <a href="#" class="flex items-center gap-2.5 sm:gap-3 group">
-          <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-ginger-500/10 border border-ginger-500/30 flex items-center justify-center text-ginger-600 transition-transform group-hover:scale-105 shrink-0">
-            <i class="fa-solid fa-leaf text-base sm:text-lg"></i>
+      <div class="flex items-center justify-between h-14 sm:h-20">
+        <!-- 左側品牌名稱 -->
+        <a href="#" class="flex items-center gap-2 group">
+          <div class="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-ginger-500/10 border border-ginger-500/30 flex items-center justify-center text-ginger-600 transition-transform group-hover:scale-105 shrink-0">
+            <i class="fa-solid fa-leaf text-sm sm:text-base"></i>
           </div>
           <div class="flex flex-col">
-            <span class="font-serif-title text-lg sm:text-2xl font-bold tracking-wider text-wabi-ink group-hover:text-ginger-700 transition-colors whitespace-nowrap">
+            <span class="font-serif-title text-base sm:text-2xl font-bold tracking-wide text-wabi-ink group-hover:text-ginger-700 transition-colors whitespace-nowrap">
               二林傳承 · 竹薑食養
             </span>
-            <span class="text-[9px] sm:text-[10px] tracking-widest text-wabi-linen uppercase">Erlin Dietary Heritage</span>
+            <span class="text-[8px] sm:text-[10px] tracking-wider text-wabi-linen uppercase">Erlin Dietary Heritage</span>
           </div>
         </a>
 
-        <!-- 桌機版導覽連結（平滑捲動錨點） -->
+        <!-- 桌機版導航 -->
         <nav class="hidden md:flex items-center space-x-7 text-sm font-medium text-wabi-ink">
           <a href="#story" class="hover:text-ginger-600 transition-colors py-1">老鎮故事</a>
           <a href="#recipe" class="hover:text-ginger-600 transition-colors py-1">私房配方</a>
@@ -108,66 +110,74 @@
           </a>
         </nav>
 
-        <!-- 手機版漢堡按鈕 -->
+        <!-- 手機版漢堡按鈕 (符合 44x44px 觸控友善標準) -->
         <div class="flex md:hidden items-center">
-          <button id="mobile-menu-btn" type="button" class="w-11 h-11 flex items-center justify-center rounded-xl text-wabi-ink hover:bg-ginger-100/50 focus:outline-none transition-colors" aria-label="切換選單">
-            <i id="menu-icon" class="fa-solid fa-bars text-xl"></i>
+          <button id="mobile-menu-btn" type="button" class="w-10 h-10 flex items-center justify-center rounded-xl text-wabi-ink hover:bg-ginger-100/60 active:bg-ginger-200 focus:outline-none transition-colors" aria-label="切換選單">
+            <i id="menu-icon" class="fa-solid fa-bars text-lg"></i>
           </button>
         </div>
       </div>
     </div>
 
-    <!-- 手機版展開選單 -->
-    <div id="mobile-menu" class="hidden md:hidden border-b border-wabi-border bg-[#FAF7F2] px-4 pt-2 pb-5 space-y-2 text-base font-medium shadow-xl">
-      <a href="#story" class="flex items-center gap-2.5 px-3.5 py-2.5 rounded-xl hover:bg-ginger-100/70 text-wabi-ink mobile-link">
-        <i class="fa-solid fa-book-open text-ginger-600 text-sm w-5"></i> 老鎮故事
+    <!-- 手機版展開選單 (平滑下拉、點擊回饋) -->
+    <div id="mobile-menu" class="hidden md:hidden border-b border-wabi-border bg-[#FAF7F2] px-4 pt-2 pb-5 space-y-1.5 text-base font-medium shadow-2xl">
+      <a href="#story" class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl hover:bg-ginger-100/70 text-wabi-ink mobile-link active:bg-ginger-200">
+        <i class="fa-solid fa-book-open text-ginger-600 text-sm w-4"></i> 老鎮故事
       </a>
-      <a href="#recipe" class="flex items-center gap-2.5 px-3.5 py-2.5 rounded-xl hover:bg-ginger-100/70 text-wabi-ink mobile-link">
-        <i class="fa-solid fa-bowl-food text-ginger-600 text-sm w-5"></i> 私房配方
+      <a href="#recipe" class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl hover:bg-ginger-100/70 text-wabi-ink mobile-link active:bg-ginger-200">
+        <i class="fa-solid fa-bowl-food text-ginger-600 text-sm w-4"></i> 私房配方
       </a>
-      <a href="#benefits" class="flex items-center gap-2.5 px-3.5 py-2.5 rounded-xl hover:bg-ginger-100/70 text-wabi-ink mobile-link">
-        <i class="fa-solid fa-seedling text-ginger-600 text-sm w-5"></i> 食養解析
+      <a href="#benefits" class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl hover:bg-ginger-100/70 text-wabi-ink mobile-link active:bg-ginger-200">
+        <i class="fa-solid fa-seedling text-ginger-600 text-sm w-4"></i> 食養解析
       </a>
-      <a href="#guidelines" class="flex items-center gap-2.5 px-3.5 py-2.5 rounded-xl hover:bg-ginger-100/70 text-wabi-ink mobile-link">
-        <i class="fa-solid fa-heart-pulse text-ginger-600 text-sm w-5"></i> 生活調養
+      <a href="#guidelines" class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl hover:bg-ginger-100/70 text-wabi-ink mobile-link active:bg-ginger-200">
+        <i class="fa-solid fa-heart-pulse text-ginger-600 text-sm w-4"></i> 生活調養
       </a>
-      <a href="#contact" class="flex items-center gap-2.5 px-3.5 py-2.5 rounded-xl hover:bg-ginger-100/70 text-wabi-ink mobile-link">
-        <i class="fa-solid fa-envelope text-ginger-600 text-sm w-5"></i> 訂購諮詢
+      <a href="#contact" class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl hover:bg-ginger-100/70 text-wabi-ink mobile-link active:bg-ginger-200">
+        <i class="fa-solid fa-envelope text-ginger-600 text-sm w-4"></i> 訂購諮詢
       </a>
-      <a href="#contact" class="flex items-center justify-center gap-2 mt-3 px-4 py-3 bg-ginger-600 text-white font-bold rounded-xl shadow-md hover:bg-ginger-700 mobile-link active:scale-98">
-        <i class="fa-solid fa-phone"></i> 立即電話諮詢訂購
-      </a>
+      <div class="pt-2">
+        <a href="#contact" class="flex items-center justify-center gap-2 px-4 py-3 bg-ginger-600 text-white font-bold rounded-xl shadow-md hover:bg-ginger-700 mobile-link active:scale-98 text-sm">
+          <i class="fa-solid fa-phone"></i> 立即電話諮詢訂購
+        </a>
+      </div>
     </div>
   </header>
 
   <!-- ========================================================= -->
-  <!-- 2. 【首頁主視覺 (Hero Section)】 -->
+  <!-- 2. 【首頁主視覺 (Hero Section)】 (手機排版優化：標籤自適應、主圖先現、按鈕易觸) -->
   <!-- ========================================================= -->
-  <section class="relative overflow-hidden pt-8 pb-16 sm:pt-14 sm:pb-24 md:py-28">
+  <section class="relative overflow-hidden pt-6 pb-12 sm:pt-14 sm:pb-20 md:py-28">
     <div class="absolute inset-0 pattern-wabi pointer-events-none"></div>
-    <div class="absolute -top-16 -right-16 w-72 h-72 sm:w-96 sm:h-96 bg-ginger-200/40 rounded-full blur-3xl pointer-events-none"></div>
-    <div class="absolute -bottom-16 -left-16 w-72 h-72 sm:w-96 sm:h-96 bg-ginger-100/60 rounded-full blur-3xl pointer-events-none"></div>
+    <div class="absolute -top-12 -right-12 w-64 h-64 sm:w-96 sm:h-96 bg-ginger-200/30 rounded-full blur-3xl pointer-events-none"></div>
+    <div class="absolute -bottom-12 -left-12 w-64 h-64 sm:w-96 sm:h-96 bg-ginger-100/50 rounded-full blur-3xl pointer-events-none"></div>
 
     <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-12 items-center">
         
         <!-- 左側文案區 -->
-        <div class="lg:col-span-7 space-y-5 sm:space-y-6 text-center lg:text-left">
+        <div class="lg:col-span-7 space-y-4 sm:space-y-6 text-center lg:text-left">
           
-          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-ginger-100/80 border border-ginger-300 text-ginger-800 text-xs sm:text-sm font-medium tracking-wide">
-            <span class="w-2 h-2 rounded-full bg-ginger-500 animate-pulse"></span>
-            傳承老手藝，驅寒培本的日常食養
+          <!-- 頂部膠囊標籤 (手機不換行折斷) -->
+          <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-ginger-100/90 border border-ginger-300 text-ginger-800 text-xs sm:text-sm font-medium tracking-wide">
+            <span class="w-1.5 h-1.5 rounded-full bg-ginger-500 animate-pulse"></span>
+            傳承老手藝 · 驅寒培本日常食養
           </div>
 
-          <h1 class="font-serif-title text-3xl xs:text-4xl sm:text-5xl lg:text-5xl font-black text-wabi-ink leading-tight tracking-tight">
+          <!-- 主標題 (手機尺寸精算，避免單字折行) -->
+          <h1 class="font-serif-title text-2xl xs:text-3xl sm:text-5xl font-black text-wabi-ink leading-snug sm:leading-tight tracking-tight">
             一碗傳承溫度的<br>
-            <span class="text-ginger-700 underline decoration-ginger-300 decoration-wavy decoration-2 underline-offset-8">竹薑茶碗蒸</span>
+            <span class="text-ginger-700 underline decoration-ginger-300 decoration-wavy decoration-2 underline-offset-4 sm:underline-offset-8">竹薑茶碗蒸</span>
           </h1>
 
-          <!-- 手機版視覺圖搶先露出 -->
-          <div class="block lg:hidden my-6">
-            <div class="relative max-w-xs mx-auto">
-              <div class="rounded-2xl overflow-hidden border border-wabi-border bg-white shadow-xl p-2.5">
+          <!-- 手機版實拍雙圖組 (高精緻度卡片，直式螢幕第一眼就能看見) -->
+          <div class="block lg:hidden my-4 sm:my-6">
+            <div class="relative max-w-xs sm:max-w-sm mx-auto">
+              <!-- 底座微光暈 -->
+              <div class="absolute inset-0 bg-gradient-to-tr from-ginger-400/20 to-amber-200/30 rounded-2xl transform rotate-1 filter blur-md"></div>
+              
+              <div class="relative rounded-2xl overflow-hidden border border-wabi-border bg-white shadow-lg p-2">
+                <!-- 主圖：茶碗蒸與竹薑粉 -->
                 <div class="aspect-[4/3] rounded-xl overflow-hidden relative">
                   <img 
                     src="product-ginger.jpg" 
@@ -175,35 +185,45 @@
                     class="w-full h-full object-cover"
                     loading="eager"
                   >
-                  <div class="absolute bottom-2 left-2 right-2 text-white p-2 rounded-lg backdrop-blur-md bg-black/40 border border-white/20 flex items-center justify-between text-left">
+                  <div class="absolute bottom-1.5 left-1.5 right-1.5 text-white p-2 rounded-lg backdrop-blur-md bg-black/45 border border-white/20 flex items-center justify-between text-left">
                     <div>
-                      <p class="font-serif-title text-xs font-bold leading-tight">二林傳承・竹薑食養方</p>
+                      <p class="font-serif-title text-xs font-bold leading-tight">二林傳承 · 竹薑食養方</p>
                       <p class="text-[10px] text-wabi-cream/90">高山竹薑粉 × 晨起溫潤蒸蛋</p>
                     </div>
-                    <span class="text-[10px] bg-ginger-500 text-white px-2 py-0.5 rounded-full font-semibold">私房手作</span>
+                    <span class="text-[10px] bg-ginger-500 text-white px-2 py-0.5 rounded-full font-semibold">私房推薦</span>
+                  </div>
+                </div>
+
+                <!-- 手機版副圖卡：竹薑粉瓶裝說明 -->
+                <div class="mt-2 p-2 rounded-xl bg-ginger-50/70 border border-ginger-100 flex items-center gap-2 text-left">
+                  <img src="ginger-jar.jpg" alt="黑蓋透明瓶身竹薑粉" class="w-12 h-12 rounded-lg object-cover border border-wabi-border shrink-0">
+                  <div class="flex-1 min-w-0">
+                    <p class="text-xs font-bold text-ginger-900 font-serif-title truncate">嚴選高山竹薑粉瓶裝</p>
+                    <p class="text-[10px] text-wabi-linen truncate">純天然細磨・隨罐附贈完整食養操作指南</p>
                   </div>
                 </div>
               </div>
             </div>
           </div>
 
-          <p class="text-base sm:text-lg md:text-xl text-wabi-linen font-light leading-relaxed max-w-2xl mx-auto lg:mx-0">
+          <!-- 副標內文 -->
+          <p class="text-[14px] sm:text-lg text-wabi-linen font-light leading-relaxed max-w-2xl mx-auto lg:mx-0 px-1 sm:px-0 text-justify sm:text-left">
             取自然之土，借老手藝之暖，以純淨活氫水與在地竹薑喚醒身體自癒活力。一盞熱氣騰騰的日常手藝，守護晨起脾胃的溫煦起點。
           </p>
 
-          <!-- 關鍵特點微標籤 -->
-          <div class="flex flex-wrap justify-center lg:justify-start gap-2.5 sm:gap-3 pt-1 text-xs sm:text-sm text-wabi-ink">
-            <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/80 border border-wabi-border"><i class="fa-solid fa-circle-check text-ginger-600"></i> 在地小農嚴選高山竹薑</span>
-            <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/80 border border-wabi-border"><i class="fa-solid fa-circle-check text-ginger-600"></i> 純天然研磨無防腐劑</span>
-            <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/80 border border-wabi-border"><i class="fa-solid fa-circle-check text-ginger-600"></i> 購買竹薑粉附贈私房食譜</span>
+          <!-- 關鍵特點微標籤 (手機版採用 2 欄整齊排列，解決長標籤破版) -->
+          <div class="grid grid-cols-2 sm:flex sm:flex-wrap justify-center lg:justify-start gap-2 pt-1 text-xs text-wabi-ink text-left">
+            <span class="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl bg-white/80 border border-wabi-border"><i class="fa-solid fa-circle-check text-ginger-600 shrink-0"></i> 在地小農嚴選高山竹薑</span>
+            <span class="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl bg-white/80 border border-wabi-border"><i class="fa-solid fa-circle-check text-ginger-600 shrink-0"></i> 純天然研磨無防腐劑</span>
+            <span class="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl bg-white/80 border border-wabi-border col-span-2 sm:col-span-1"><i class="fa-solid fa-circle-check text-ginger-600 shrink-0"></i> 購買竹薑粉附贈私房食譜指南</span>
           </div>
 
-          <!-- 互動按鈕 -->
-          <div class="pt-4 flex flex-col sm:flex-row items-stretch sm:items-center justify-center lg:justify-start gap-3.5 sm:gap-4 max-w-sm sm:max-w-none mx-auto lg:mx-0">
-            <a href="#recipe" class="inline-flex items-center justify-center gap-2 px-7 py-3.5 bg-ginger-600 hover:bg-ginger-700 active:bg-ginger-800 text-white font-medium rounded-full shadow-lg hover:shadow-ginger-500/20 transition-all text-base active:scale-98">
+          <!-- 互動按鈕 (手機版撐滿寬度、人體工學好點擊) -->
+          <div class="pt-2 sm:pt-4 flex flex-col sm:flex-row items-stretch sm:items-center justify-center lg:justify-start gap-2.5 sm:gap-4 max-w-sm sm:max-w-none mx-auto lg:mx-0">
+            <a href="#recipe" class="inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-ginger-600 hover:bg-ginger-700 active:bg-ginger-800 text-white font-medium rounded-xl sm:rounded-full shadow-lg hover:shadow-ginger-500/20 transition-all text-sm sm:text-base active:scale-98">
               <i class="fa-solid fa-bowl-food"></i> 查看茶碗蒸做法
             </a>
-            <a href="tel:0910837253" class="inline-flex items-center justify-center gap-2 px-7 py-3.5 bg-white hover:bg-ginger-50 active:bg-ginger-100 text-wabi-ink border border-wabi-border font-medium rounded-full shadow-sm transition-all text-base active:scale-98">
+            <a href="tel:0910837253" class="inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-white hover:bg-ginger-50 active:bg-ginger-100 text-wabi-ink border border-wabi-border font-medium rounded-xl sm:rounded-full shadow-sm transition-all text-sm sm:text-base active:scale-98">
               <i class="fa-solid fa-phone text-ginger-600"></i> 電話諮詢訂購 (0910-837-253)
             </a>
           </div>
@@ -215,7 +235,6 @@
           <div class="relative w-full max-w-md mx-auto">
             <div class="absolute inset-0 bg-gradient-to-tr from-ginger-400/30 to-amber-200/40 rounded-3xl transform rotate-2 filter blur-xl"></div>
             
-            <!-- 主圖：竹薑粉罐搭配茶碗蒸情境圖 -->
             <div class="relative rounded-3xl overflow-hidden border border-wabi-border bg-white shadow-2xl p-3">
               <div class="aspect-[4/3] rounded-2xl overflow-hidden bg-wabi-sand relative group">
                 <img 
@@ -233,7 +252,7 @@
                 </div>
               </div>
 
-              <!-- 副圖疊層：黑蓋透明瓶身竹薑粉特寫 -->
+              <!-- 副圖疊層 -->
               <div class="mt-3 grid grid-cols-3 gap-2">
                 <div class="col-span-1 rounded-xl overflow-hidden border border-wabi-border bg-wabi-sand aspect-square relative group">
                   <img src="ginger-jar.jpg" alt="黑蓋透明瓶身竹薑粉" class="w-full h-full object-cover group-hover:scale-110 transition-transform">
@@ -243,7 +262,6 @@
                   <p class="text-[11px] text-wabi-linen mt-0.5">低溫細磨・保留辛辣薑烯酚，每瓶皆附專用量匙與食養說明。</p>
                 </div>
               </div>
-
             </div>
           </div>
         </div>
@@ -253,57 +271,57 @@
   </section>
 
   <!-- ========================================================= -->
-  <!-- 3. 【品牌故事 (Brand Story)】 -->
+  <!-- 3. 【品牌故事 (Brand Story)】 (手機排版：移除過大縮排、段落層次清晰) -->
   <!-- ========================================================= -->
-  <section id="story" class="py-16 sm:py-24 bg-wabi-sand/45 border-y border-wabi-border/70 relative">
+  <section id="story" class="py-12 sm:py-20 bg-wabi-sand/40 border-y border-wabi-border/70 relative">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
       
-      <div class="text-center max-w-2xl mx-auto mb-12 sm:mb-16">
+      <div class="text-center max-w-2xl mx-auto mb-8 sm:mb-14">
         <span class="text-xs uppercase tracking-widest text-ginger-700 font-semibold">Town Heritage Story</span>
-        <h2 class="font-serif-title text-2xl sm:text-3xl md:text-4xl font-bold text-wabi-ink mt-2 mb-4">
+        <h2 class="font-serif-title text-2xl sm:text-3xl md:text-4xl font-bold text-wabi-ink mt-1.5 mb-3">
           老鎮跌打館裡的溫暖手藝
         </h2>
-        <div class="w-16 h-1 bg-ginger-500 mx-auto rounded-full"></div>
+        <div class="w-14 sm:w-16 h-1 bg-ginger-500 mx-auto rounded-full"></div>
       </div>
 
-      <div class="bg-white rounded-3xl p-6 sm:p-10 md:p-12 border border-wabi-border shadow-lg space-y-6 sm:space-y-8 leading-relaxed text-wabi-ink text-[15px] sm:text-base">
+      <div class="bg-white rounded-3xl p-5 sm:p-10 border border-wabi-border shadow-lg space-y-4 sm:space-y-6 text-wabi-ink text-[14px] sm:text-base leading-relaxed">
         
         <!-- 故事首圖 -->
-        <div class="rounded-2xl overflow-hidden border border-wabi-border shadow-sm mb-6">
-          <div class="aspect-[16/9] w-full overflow-hidden relative">
+        <div class="rounded-2xl overflow-hidden border border-wabi-border shadow-sm mb-4 sm:mb-6">
+          <div class="aspect-[16/10] sm:aspect-[16/9] w-full overflow-hidden relative">
             <img 
               src="product-ginger.jpg" 
               alt="二林傳承竹薑茶碗蒸溫潤手藝" 
               class="w-full h-full object-cover"
               loading="lazy"
             >
-            <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
-            <div class="absolute bottom-4 left-4 right-4 text-white">
-              <span class="text-xs bg-ginger-600/90 backdrop-blur-sm px-2.5 py-1 rounded">二林回憶</span>
-              <p class="font-serif-title text-base sm:text-lg font-bold mt-1">鹿港師傅的茶碗蒸與仙楂餅</p>
+            <div class="absolute inset-0 bg-gradient-to-t from-black/55 via-transparent to-transparent"></div>
+            <div class="absolute bottom-3 left-3.5 right-3.5 text-white">
+              <span class="text-[10px] sm:text-xs bg-ginger-600/90 backdrop-blur-sm px-2 py-0.5 rounded">二林回憶</span>
+              <p class="font-serif-title text-sm sm:text-lg font-bold mt-1">鹿港師傅的茶碗蒸與仙楂餅</p>
             </div>
           </div>
         </div>
 
-        <p class="text-justify indent-8 text-wabi-linen leading-loose">
+        <p class="text-justify text-wabi-linen leading-loose">
           幼年在彰化二林小鎮，街上有位大家都熟識的「<span class="font-bold text-wabi-ink">鹿港師仔</span>」，專門為鄉親推拿調理。小時候我們常溜進館子裡比劃武打招式，師傅從不生氣，總是笑瞇瞇地分我們仙楂餅吃，偶爾指點幾手身法。只要見到體質較為單薄、瘦弱的孩子，他便會端出一碗熱氣蒸騰的茶碗蒸，拍拍肩膀說：<strong class="text-ginger-800">『趁熱吃，補補身子。』</strong>
         </p>
 
-        <p class="text-justify indent-8 text-wabi-linen leading-loose">
+        <p class="text-justify text-wabi-linen leading-loose">
           這份記憶，在多年後又被喚醒。疫情前年冬日，回鄉探望高中老友。過去每逢寒冬在台北見面，嫂子總是厚衣裹得緊緊的，在家也離不開暖爐。沒想到那天返鄉相聚，她只披著一件輕便夾克，臉色紅潤、談笑風生。
         </p>
 
-        <!-- 見證引用卡片 -->
-        <div class="my-6 p-5 sm:p-6 bg-wabi-cream rounded-2xl border-l-4 border-ginger-500 shadow-sm">
-          <div class="flex items-start gap-3">
-            <i class="fa-solid fa-quote-left text-ginger-500 text-xl mt-1 shrink-0"></i>
-            <p class="text-sm sm:text-base text-wabi-ink italic leading-relaxed">
+        <!-- 見證引用小卡 (手機端內距微調) -->
+        <div class="my-4 sm:my-6 p-4 sm:p-6 bg-wabi-cream rounded-2xl border-l-4 border-ginger-500 shadow-sm">
+          <div class="flex items-start gap-2.5 sm:gap-3">
+            <i class="fa-solid fa-quote-left text-ginger-500 text-lg sm:text-xl mt-0.5 shrink-0"></i>
+            <p class="text-xs sm:text-base text-wabi-ink italic leading-relaxed">
               好奇一問才知道，退休回鄉後，鄰居洪老師分享了當年伯父（鹿港師傅）留下的養生方子。嫂子每天早晨為自己蒸一碗熱呼呼的竹薑茶碗蒸，不知不覺間，整個人底氣足了、手腳不再冰涼，整天都精神奕奕。
             </p>
           </div>
         </div>
 
-        <p class="text-justify indent-8 text-wabi-linen leading-loose">
+        <p class="text-justify text-wabi-linen leading-loose">
           昔日師傅調製這道茶碗蒸，需講究特定的水質時辰，工序繁瑣難以推廣；如今有了台灣在地優質的<span class="font-semibold text-ginger-800">活氫水技術</span>，讓繁瑣的老方子能以最純粹、簡便的方式走入日常家庭。這份緣分，正是與有緣人細水長流分享的時候。
         </p>
 
@@ -313,122 +331,128 @@
   </section>
 
   <!-- ========================================================= -->
-  <!-- 4. 【私房配方說明書 (Recipe & Ingredients)】 -->
+  <!-- 4. 【私房配方說明書 (Recipe & Ingredients)】 (手機 2 欄並列，一屏看齊 4 大原料) -->
   <!-- ========================================================= -->
-  <section id="recipe" class="py-16 sm:py-24 relative overflow-hidden">
+  <section id="recipe" class="py-12 sm:py-20 relative overflow-hidden">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       
-      <div class="text-center max-w-2xl mx-auto mb-12 sm:mb-16">
+      <div class="text-center max-w-2xl mx-auto mb-8 sm:mb-14">
         <span class="text-xs uppercase tracking-widest text-ginger-700 font-semibold">Daily Recipe</span>
-        <h2 class="font-serif-title text-2xl sm:text-3xl md:text-4xl font-bold text-wabi-ink mt-2 mb-3">
+        <h2 class="font-serif-title text-2xl sm:text-3xl md:text-4xl font-bold text-wabi-ink mt-1.5 mb-2 sm:mb-3">
           竹薑茶碗蒸｜日常備料比例
         </h2>
-        <p class="text-wabi-linen text-sm sm:text-base">
+        <p class="text-wabi-linen text-xs sm:text-base">
           晨起一碗溫暖，無負擔的輕盈活力早餐
         </p>
-        <div class="w-16 h-1 bg-ginger-500 mx-auto rounded-full mt-4"></div>
+        <div class="w-14 sm:w-16 h-1 bg-ginger-500 mx-auto rounded-full mt-3 sm:mt-4"></div>
       </div>
 
-      <!-- 配方 4 原料卡片 -->
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-12">
+      <!-- 配方卡片：手機版使用 2 欄 Grid（極致整齊，不需長距離滑動） -->
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6 mb-8 sm:mb-12">
         
         <!-- 原料 1: 優質活氫水 -->
-        <div class="bg-white rounded-3xl p-6 border border-wabi-border shadow-md hover:shadow-xl transition-all duration-300 flex flex-col justify-between">
+        <div class="bg-white rounded-2xl sm:rounded-3xl p-4 sm:p-6 border border-wabi-border shadow-sm flex flex-col justify-between">
           <div>
-            <div class="w-12 h-12 rounded-2xl bg-blue-50 text-blue-600 flex items-center justify-center text-xl mb-4">
+            <div class="w-9 h-9 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl bg-blue-50 text-blue-600 flex items-center justify-center text-sm sm:text-xl mb-3">
               <i class="fa-solid fa-droplet"></i>
             </div>
-            <span class="text-xs text-wabi-linen font-medium block">原料 01</span>
-            <h3 class="font-serif-title text-lg font-bold text-wabi-ink mt-1">優質活氫水</h3>
-            <p class="font-serif-title text-2xl font-black text-ginger-600 mt-2">100 cc</p>
-            <p class="text-xs text-wabi-linen mt-3 leading-relaxed">
-              細緻小分子水質，活性高、易滲透，作為料理基底能溫潤喚醒消化道。
+            <span class="text-[10px] sm:text-xs text-wabi-linen font-medium block">原料 01</span>
+            <h3 class="font-serif-title text-sm sm:text-lg font-bold text-wabi-ink mt-0.5">優質活氫水</h3>
+            <p class="font-serif-title text-lg sm:text-2xl font-black text-ginger-600 mt-1 sm:mt-2">100 cc</p>
+            <p class="text-[11px] sm:text-xs text-wabi-linen mt-2 leading-relaxed">
+              細緻小分子水質，溫潤喚醒消化道。
             </p>
           </div>
         </div>
 
         <!-- 原料 2: 純竹薑粉 -->
-        <div class="bg-white rounded-3xl p-6 border border-wabi-border shadow-md hover:shadow-xl transition-all duration-300 flex flex-col justify-between">
+        <div class="bg-white rounded-2xl sm:rounded-3xl p-4 sm:p-6 border border-wabi-border shadow-sm flex flex-col justify-between">
           <div>
-            <div class="w-12 h-12 rounded-2xl bg-ginger-50 text-ginger-600 flex items-center justify-center text-xl mb-4">
+            <div class="w-9 h-9 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl bg-ginger-50 text-ginger-600 flex items-center justify-center text-sm sm:text-xl mb-3">
               <i class="fa-solid fa-mortar-pestle"></i>
             </div>
-            <span class="text-xs text-wabi-linen font-medium block">原料 02</span>
-            <h3 class="font-serif-title text-lg font-bold text-wabi-ink mt-1">純竹薑粉</h3>
-            <p class="font-serif-title text-2xl font-black text-ginger-600 mt-2">3 ～ 5 g</p>
-            <p class="text-xs text-wabi-linen mt-3 leading-relaxed">
-              在地嚴選高山竹薑，溫潤深厚，溫中行氣、升陽驅寒，初嚐者可先由 3g 開始。
+            <span class="text-[10px] sm:text-xs text-wabi-linen font-medium block">原料 02</span>
+            <h3 class="font-serif-title text-sm sm:text-lg font-bold text-wabi-ink mt-0.5">純竹薑粉</h3>
+            <p class="font-serif-title text-lg sm:text-2xl font-black text-ginger-600 mt-1 sm:mt-2">3 ～ 5 g</p>
+            <p class="text-[11px] sm:text-xs text-wabi-linen mt-2 leading-relaxed">
+              在地高山竹薑，溫中行氣、升陽驅寒。
             </p>
           </div>
         </div>
 
         <!-- 原料 3: 低溫初榨好油 -->
-        <div class="bg-white rounded-3xl p-6 border border-wabi-border shadow-md hover:shadow-xl transition-all duration-300 flex flex-col justify-between">
+        <div class="bg-white rounded-2xl sm:rounded-3xl p-4 sm:p-6 border border-wabi-border shadow-sm flex flex-col justify-between">
           <div>
-            <div class="w-12 h-12 rounded-2xl bg-amber-50 text-amber-600 flex items-center justify-center text-xl mb-4">
+            <div class="w-9 h-9 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl bg-amber-50 text-amber-600 flex items-center justify-center text-sm sm:text-xl mb-3">
               <i class="fa-solid fa-bottle-droplet"></i>
             </div>
-            <span class="text-xs text-wabi-linen font-medium block">原料 03</span>
-            <h3 class="font-serif-title text-lg font-bold text-wabi-ink mt-1">低溫初榨好油</h3>
-            <p class="font-serif-title text-2xl font-black text-ginger-600 mt-2">10 cc</p>
-            <p class="text-xs text-wabi-linen mt-3 leading-relaxed">
-              如冷壓苦茶油、酪梨油或優質橄欖油，富含單元不飽和脂肪酸，零反式脂肪。
+            <span class="text-[10px] sm:text-xs text-wabi-linen font-medium block">原料 03</span>
+            <h3 class="font-serif-title text-sm sm:text-lg font-bold text-wabi-ink mt-0.5">低溫初榨好油</h3>
+            <p class="font-serif-title text-lg sm:text-2xl font-black text-ginger-600 mt-1 sm:mt-2">10 cc</p>
+            <p class="text-[11px] sm:text-xs text-wabi-linen mt-2 leading-relaxed">
+              如冷壓苦茶油、酪梨油或優質橄欖油。
             </p>
           </div>
         </div>
 
         <!-- 原料 4: 新鮮雞蛋 -->
-        <div class="bg-white rounded-3xl p-6 border border-wabi-border shadow-md hover:shadow-xl transition-all duration-300 flex flex-col justify-between">
+        <div class="bg-white rounded-2xl sm:rounded-3xl p-4 sm:p-6 border border-wabi-border shadow-sm flex flex-col justify-between">
           <div>
-            <div class="w-12 h-12 rounded-2xl bg-orange-50 text-orange-600 flex items-center justify-center text-xl mb-4">
+            <div class="w-9 h-9 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl bg-orange-50 text-orange-600 flex items-center justify-center text-sm sm:text-xl mb-3">
               <i class="fa-solid fa-egg"></i>
             </div>
-            <span class="text-xs text-wabi-linen font-medium block">原料 04</span>
-            <h3 class="font-serif-title text-lg font-bold text-wabi-ink mt-1">新鮮雞蛋</h3>
-            <p class="font-serif-title text-2xl font-black text-ginger-600 mt-2">1 顆</p>
-            <p class="text-xs text-wabi-linen mt-3 leading-relaxed">
-              優質全營養蛋白質來源，蛋之甘平中和薑之辛熱，達成陰陽調和。
+            <span class="text-[10px] sm:text-xs text-wabi-linen font-medium block">原料 04</span>
+            <h3 class="font-serif-title text-sm sm:text-lg font-bold text-wabi-ink mt-0.5">新鮮雞蛋</h3>
+            <p class="font-serif-title text-lg sm:text-2xl font-black text-ginger-600 mt-1 sm:mt-2">1 顆</p>
+            <p class="text-[11px] sm:text-xs text-wabi-linen mt-2 leading-relaxed">
+              全營養蛋白質，蛋之甘平調和陰陽。
             </p>
           </div>
         </div>
 
       </div>
 
-      <!-- 料理 3 步驟 -->
-      <div class="bg-white rounded-3xl p-6 sm:p-10 border border-wabi-border shadow-lg">
-        <h3 class="font-serif-title text-xl font-bold text-wabi-ink mb-6 flex items-center gap-2">
+      <!-- 料理 3 步驟 (手機版卡片化易讀) -->
+      <div class="bg-white rounded-3xl p-5 sm:p-10 border border-wabi-border shadow-lg">
+        <h3 class="font-serif-title text-lg sm:text-xl font-bold text-wabi-ink mb-4 sm:mb-6 flex items-center gap-2">
           <i class="fa-solid fa-utensils text-ginger-600"></i> 三分鐘輕鬆料理步驟
         </h3>
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div class="p-5 rounded-2xl bg-wabi-cream/80 border border-wabi-border/60 space-y-2">
-            <div class="w-8 h-8 rounded-full bg-ginger-500 text-white flex items-center justify-center font-bold text-xs">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-3.5 sm:gap-6">
+          <div class="p-4 sm:p-5 rounded-2xl bg-wabi-cream/80 border border-wabi-border/60 space-y-1.5 flex sm:block items-center gap-3">
+            <div class="w-8 h-8 rounded-full bg-ginger-500 text-white flex items-center justify-center font-bold text-xs shrink-0">
               01
             </div>
-            <h4 class="font-bold text-wabi-ink text-base">Step 1：調和打勻</h4>
-            <p class="text-xs sm:text-sm text-wabi-linen leading-relaxed">
-              將雞蛋打勻，倒入 100cc 活氫水與 3~5g 竹薑粉輕柔攪拌均勻。
-            </p>
+            <div>
+              <h4 class="font-bold text-wabi-ink text-sm sm:text-base">Step 1：調和打勻</h4>
+              <p class="text-xs sm:text-sm text-wabi-linen leading-relaxed">
+                將雞蛋打勻，倒入 100cc 活氫水與 3~5g 竹薑粉輕柔攪勻。
+              </p>
+            </div>
           </div>
 
-          <div class="p-5 rounded-2xl bg-wabi-cream/80 border border-wabi-border/60 space-y-2">
-            <div class="w-8 h-8 rounded-full bg-ginger-500 text-white flex items-center justify-center font-bold text-xs">
+          <div class="p-4 sm:p-5 rounded-2xl bg-wabi-cream/80 border border-wabi-border/60 space-y-1.5 flex sm:block items-center gap-3">
+            <div class="w-8 h-8 rounded-full bg-ginger-500 text-white flex items-center justify-center font-bold text-xs shrink-0">
               02
             </div>
-            <h4 class="font-bold text-wabi-ink text-base">Step 2：淋油過篩</h4>
-            <p class="text-xs sm:text-sm text-wabi-linen leading-relaxed">
-              淋入 10cc 低溫初榨好油，稍微過篩使蛋液質地更細緻無氣泡。
-            </p>
+            <div>
+              <h4 class="font-bold text-wabi-ink text-sm sm:text-base">Step 2：淋油過篩</h4>
+              <p class="text-xs sm:text-sm text-wabi-linen leading-relaxed">
+                淋入 10cc 低溫初榨好油，稍微過篩使蛋液質地更細緻。
+              </p>
+            </div>
           </div>
 
-          <div class="p-5 rounded-2xl bg-wabi-cream/80 border border-wabi-border/60 space-y-2">
-            <div class="w-8 h-8 rounded-full bg-ginger-500 text-white flex items-center justify-center font-bold text-xs">
+          <div class="p-4 sm:p-5 rounded-2xl bg-wabi-cream/80 border border-wabi-border/60 space-y-1.5 flex sm:block items-center gap-3">
+            <div class="w-8 h-8 rounded-full bg-ginger-500 text-white flex items-center justify-center font-bold text-xs shrink-0">
               03
             </div>
-            <h4 class="font-bold text-wabi-ink text-base">Step 3：溫蒸起鍋</h4>
-            <p class="text-xs sm:text-sm text-wabi-linen leading-relaxed">
-              放入電鍋或蒸鍋，外鍋半杯水，鍋蓋留一小縫，蒸約 10-12 分鐘至滑嫩起鍋。
-            </p>
+            <div>
+              <h4 class="font-bold text-wabi-ink text-sm sm:text-base">Step 3：溫蒸起鍋</h4>
+              <p class="text-xs sm:text-sm text-wabi-linen leading-relaxed">
+                外鍋半杯水、鍋蓋留一縫，蒸約 10-12 分鐘滑嫩起鍋。
+              </p>
+            </div>
           </div>
         </div>
       </div>
@@ -439,86 +463,102 @@
   <!-- ========================================================= -->
   <!-- 5. 【四大核心食養解析 (Ingredient Benefits)】 -->
   <!-- ========================================================= -->
-  <section id="benefits" class="py-16 sm:py-24 bg-wabi-sand/40 border-t border-wabi-border/70">
+  <section id="benefits" class="py-12 sm:py-20 bg-wabi-sand/40 border-t border-wabi-border/70">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       
-      <div class="text-center max-w-2xl mx-auto mb-12 sm:mb-16">
+      <div class="text-center max-w-2xl mx-auto mb-8 sm:mb-14">
         <span class="text-xs uppercase tracking-widest text-ginger-700 font-semibold">Nutritional Synergy</span>
-        <h2 class="font-serif-title text-2xl sm:text-3xl md:text-4xl font-bold text-wabi-ink mt-2 mb-3">
+        <h2 class="font-serif-title text-2xl sm:text-3xl md:text-4xl font-bold text-wabi-ink mt-1.5 mb-2 sm:mb-3">
           食養解析｜四重營養的自然協調
         </h2>
-        <p class="text-wabi-linen text-sm sm:text-base">
+        <p class="text-wabi-linen text-xs sm:text-base">
           以科學視角解構東方智慧，回歸食材本身的純淨力量
         </p>
-        <div class="w-16 h-1 bg-ginger-500 mx-auto rounded-full mt-4"></div>
+        <div class="w-14 sm:w-16 h-1 bg-ginger-500 mx-auto rounded-full mt-3 sm:mt-4"></div>
       </div>
 
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
         
         <!-- 活氫水 -->
-        <div class="bg-white rounded-3xl p-6 sm:p-7 border border-wabi-border shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 flex flex-col justify-between">
+        <div class="bg-white rounded-3xl p-5 sm:p-7 border border-wabi-border shadow-md hover:shadow-xl transition-all duration-300 flex flex-col justify-between">
           <div>
-            <div class="w-12 h-12 rounded-2xl bg-blue-50 text-blue-600 flex items-center justify-center text-xl mb-4">
-              <i class="fa-solid fa-water"></i>
+            <div class="flex items-center gap-3 mb-2.5">
+              <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center text-lg sm:text-xl shrink-0">
+                <i class="fa-solid fa-water"></i>
+              </div>
+              <div>
+                <h3 class="font-serif-title text-base sm:text-lg font-bold text-wabi-ink">【活氫水】潤澤吸收</h3>
+                <span class="text-[10px] sm:text-xs inline-block px-2 py-0.5 rounded-full bg-blue-100 text-blue-800 font-medium">微米分子高活性</span>
+              </div>
             </div>
-            <h3 class="font-serif-title text-xl font-bold text-wabi-ink mb-1">【活氫水】潤澤吸收</h3>
-            <span class="text-xs inline-block px-2.5 py-0.5 rounded-full bg-blue-100 text-blue-800 font-medium my-2">微米分子高活性</span>
-            <p class="text-xs sm:text-sm text-wabi-linen leading-relaxed mt-2">
+            <p class="text-xs sm:text-sm text-wabi-linen leading-relaxed mt-2 text-justify">
               現代科學研究指出，分子氫（H₂）具有良好的生物活性，水分子細緻好吸收，作為料理基底，能溫潤喚醒消化道。
             </p>
           </div>
-          <div class="mt-6 pt-4 border-t border-wabi-border/60 text-xs text-blue-700 font-medium">
+          <div class="mt-4 pt-3 border-t border-wabi-border/60 text-xs text-blue-700 font-medium">
             ✓ 促進水分深層浸潤吸收
           </div>
         </div>
 
         <!-- 竹薑粉 -->
-        <div class="bg-white rounded-3xl p-6 sm:p-7 border border-wabi-border shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 flex flex-col justify-between">
+        <div class="bg-white rounded-3xl p-5 sm:p-7 border border-wabi-border shadow-md hover:shadow-xl transition-all duration-300 flex flex-col justify-between">
           <div>
-            <div class="w-12 h-12 rounded-2xl bg-ginger-50 text-ginger-600 flex items-center justify-center text-xl mb-4">
-              <i class="fa-solid fa-fire"></i>
+            <div class="flex items-center gap-3 mb-2.5">
+              <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-ginger-50 text-ginger-600 flex items-center justify-center text-lg sm:text-xl shrink-0">
+                <i class="fa-solid fa-fire"></i>
+              </div>
+              <div>
+                <h3 class="font-serif-title text-base sm:text-lg font-bold text-wabi-ink">【竹薑粉】溫中散寒</h3>
+                <span class="text-[10px] sm:text-xs inline-block px-2 py-0.5 rounded-full bg-ginger-100 text-ginger-800 font-medium">行氣升陽驅寒</span>
+              </div>
             </div>
-            <h3 class="font-serif-title text-xl font-bold text-wabi-ink mb-1">【竹薑粉】溫中散寒</h3>
-            <span class="text-xs inline-block px-2.5 py-0.5 rounded-full bg-ginger-100 text-ginger-800 font-medium my-2">行氣升陽驅寒</span>
-            <p class="text-xs sm:text-sm text-wabi-linen leading-relaxed mt-2">
+            <p class="text-xs sm:text-sm text-wabi-linen leading-relaxed mt-2 text-justify">
               在中醫食療中，老薑性溫，能溫中行氣、升陽驅寒。特別適合體質偏冷、日常畏風怕涼的人日常調養（體質易口乾燥熱者可酌量減半）。
             </p>
           </div>
-          <div class="mt-6 pt-4 border-t border-wabi-border/60 text-xs text-ginger-700 font-medium">
+          <div class="mt-4 pt-3 border-t border-wabi-border/60 text-xs text-ginger-700 font-medium">
             ✓ 喚醒脾胃初陽底氣
           </div>
         </div>
 
         <!-- 初榨好油 -->
-        <div class="bg-white rounded-3xl p-6 sm:p-7 border border-wabi-border shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 flex flex-col justify-between">
+        <div class="bg-white rounded-3xl p-5 sm:p-7 border border-wabi-border shadow-md hover:shadow-xl transition-all duration-300 flex flex-col justify-between">
           <div>
-            <div class="w-12 h-12 rounded-2xl bg-amber-50 text-amber-600 flex items-center justify-center text-xl mb-4">
-              <i class="fa-solid fa-shield"></i>
+            <div class="flex items-center gap-3 mb-2.5">
+              <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center text-lg sm:text-xl shrink-0">
+                <i class="fa-solid fa-shield"></i>
+              </div>
+              <div>
+                <h3 class="font-serif-title text-base sm:text-lg font-bold text-wabi-ink">【初榨好油】潤養平衡</h3>
+                <span class="text-[10px] sm:text-xs inline-block px-2 py-0.5 rounded-full bg-amber-100 text-amber-800 font-medium">單元不飽和脂肪酸</span>
+              </div>
             </div>
-            <h3 class="font-serif-title text-xl font-bold text-wabi-ink mb-1">【初榨好油】潤養平衡</h3>
-            <span class="text-xs inline-block px-2.5 py-0.5 rounded-full bg-amber-100 text-amber-800 font-medium my-2">單元不飽和脂肪酸</span>
-            <p class="text-xs sm:text-sm text-wabi-linen leading-relaxed mt-2">
+            <p class="text-xs sm:text-sm text-wabi-linen leading-relaxed mt-2 text-justify">
               選用富含單元不飽和脂肪酸的低溫初榨油，無反式脂肪，替清晨提供穩定長效的保護力與飽足感。
             </p>
           </div>
-          <div class="mt-6 pt-4 border-t border-wabi-border/60 text-xs text-amber-700 font-medium">
+          <div class="mt-4 pt-3 border-t border-wabi-border/60 text-xs text-amber-700 font-medium">
             ✓ 長效保護力與大腦能量
           </div>
         </div>
 
         <!-- 新鮮雞蛋 -->
-        <div class="bg-white rounded-3xl p-6 sm:p-7 border border-wabi-border shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 flex flex-col justify-between">
+        <div class="bg-white rounded-3xl p-5 sm:p-7 border border-wabi-border shadow-md hover:shadow-xl transition-all duration-300 flex flex-col justify-between">
           <div>
-            <div class="w-12 h-12 rounded-2xl bg-orange-50 text-orange-600 flex items-center justify-center text-xl mb-4">
-              <i class="fa-solid fa-heart"></i>
+            <div class="flex items-center gap-3 mb-2.5">
+              <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-orange-50 text-orange-600 flex items-center justify-center text-lg sm:text-xl shrink-0">
+                <i class="fa-solid fa-heart"></i>
+              </div>
+              <div>
+                <h3 class="font-serif-title text-base sm:text-lg font-bold text-wabi-ink">【新鮮雞蛋】全營養平補</h3>
+                <span class="text-[10px] sm:text-xs inline-block px-2 py-0.5 rounded-full bg-orange-100 text-orange-800 font-medium">優質蛋白與卵磷脂</span>
+              </div>
             </div>
-            <h3 class="font-serif-title text-xl font-bold text-wabi-ink mb-1">【新鮮雞蛋】全營養平補</h3>
-            <span class="text-xs inline-block px-2.5 py-0.5 rounded-full bg-orange-100 text-orange-800 font-medium my-2">優質蛋白與卵磷脂</span>
-            <p class="text-xs sm:text-sm text-wabi-linen leading-relaxed mt-2">
+            <p class="text-xs sm:text-sm text-wabi-linen leading-relaxed mt-2 text-justify">
               《本草綱目》記載蛋黃滋陰養血、蛋白微寒清氣，全蛋同食性味平和。現代營養學視為優質蛋白質極佳來源，富含卵磷脂、維生素 D 與葉黃素，為長輩維持活力。
             </p>
           </div>
-          <div class="mt-6 pt-4 border-t border-wabi-border/60 text-xs text-orange-700 font-medium">
+          <div class="mt-4 pt-3 border-t border-wabi-border/60 text-xs text-orange-700 font-medium">
             ✓ 扎實營養滋養潤燥
           </div>
         </div>
@@ -531,15 +571,15 @@
   <!-- ========================================================= -->
   <!-- 6. 【生活調養指南 (Guidelines & Tips)】 -->
   <!-- ========================================================= -->
-  <section id="guidelines" class="py-16 sm:py-24 relative">
+  <section id="guidelines" class="py-12 sm:py-20 relative">
     <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
       
-      <div class="bg-white rounded-3xl border border-wabi-border shadow-xl p-6 sm:p-10 md:p-12 space-y-8">
+      <div class="bg-white rounded-3xl border border-wabi-border shadow-xl p-5 sm:p-10 space-y-6">
         
-        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-6 border-b border-wabi-border">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 sm:pb-6 border-b border-wabi-border">
           <div>
             <span class="text-xs uppercase tracking-widest text-ginger-700 font-semibold">Living Harmony</span>
-            <h2 class="font-serif-title text-2xl sm:text-3xl font-bold text-wabi-ink mt-1">
+            <h2 class="font-serif-title text-xl sm:text-2xl md:text-3xl font-bold text-wabi-ink mt-1">
               日常調養與建議事項
             </h2>
           </div>
@@ -548,11 +588,11 @@
           </span>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
           
           <!-- 卡片 1: 食材共融加乘 -->
-          <div class="p-5 rounded-2xl bg-wabi-cream/60 border border-wabi-border/80 space-y-2">
-            <div class="flex items-center gap-2.5 text-ginger-800 font-serif-title font-bold text-base sm:text-lg">
+          <div class="p-4 sm:p-5 rounded-2xl bg-wabi-cream/60 border border-wabi-border/80 space-y-1.5">
+            <div class="flex items-center gap-2 text-ginger-800 font-serif-title font-bold text-sm sm:text-base">
               <i class="fa-solid fa-sparkles text-ginger-600"></i>
               <h3>食材共融加乘</h3>
             </div>
@@ -562,8 +602,8 @@
           </div>
 
           <!-- 卡片 2: 輕盈飽足代餐 -->
-          <div class="p-5 rounded-2xl bg-wabi-cream/60 border border-wabi-border/80 space-y-2">
-            <div class="flex items-center gap-2.5 text-ginger-800 font-serif-title font-bold text-base sm:text-lg">
+          <div class="p-4 sm:p-5 rounded-2xl bg-wabi-cream/60 border border-wabi-border/80 space-y-1.5">
+            <div class="flex items-center gap-2 text-ginger-800 font-serif-title font-bold text-sm sm:text-base">
               <i class="fa-solid fa-feather text-ginger-600"></i>
               <h3>輕盈飽足代餐</h3>
             </div>
@@ -573,8 +613,8 @@
           </div>
 
           <!-- 卡片 3: 培本固源調養 -->
-          <div class="p-5 rounded-2xl bg-wabi-cream/60 border border-wabi-border/80 space-y-2">
-            <div class="flex items-center gap-2.5 text-ginger-800 font-serif-title font-bold text-base sm:text-lg">
+          <div class="p-4 sm:p-5 rounded-2xl bg-wabi-cream/60 border border-wabi-border/80 space-y-1.5">
+            <div class="flex items-center gap-2 text-ginger-800 font-serif-title font-bold text-sm sm:text-base">
               <i class="fa-solid fa-tree text-ginger-600"></i>
               <h3>培本固源調養</h3>
             </div>
@@ -584,8 +624,8 @@
           </div>
 
           <!-- 卡片 4: 溫馨叮嚀 -->
-          <div class="p-5 rounded-2xl bg-amber-50/60 border border-amber-200/80 space-y-2">
-            <div class="flex items-center gap-2.5 text-amber-900 font-serif-title font-bold text-base sm:text-lg">
+          <div class="p-4 sm:p-5 rounded-2xl bg-amber-50/60 border border-amber-200/80 space-y-1.5">
+            <div class="flex items-center gap-2 text-amber-900 font-serif-title font-bold text-sm sm:text-base">
               <i class="fa-solid fa-hand-holding-heart text-amber-600"></i>
               <h3>溫馨叮嚀</h3>
             </div>
@@ -604,72 +644,72 @@
   <!-- ========================================================= -->
   <!-- 7. 【聯絡與訂購區 (Contact & Ordering)】 -->
   <!-- ========================================================= -->
-  <footer id="contact" class="bg-wabi-ink text-wabi-cream pt-16 pb-12 border-t border-ginger-900/40">
+  <footer id="contact" class="bg-wabi-ink text-wabi-cream pt-12 sm:pt-16 pb-12 border-t border-ginger-900/40">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 sm:gap-12 pb-12 border-b border-white/10">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-12 pb-10 border-b border-white/10">
         
-        <!-- 左側：與有緣人分享的心意 (5 欄) -->
-        <div class="lg:col-span-5 space-y-4 text-center sm:text-left">
-          <div class="flex items-center justify-center sm:justify-start gap-3">
-            <div class="w-10 h-10 rounded-full bg-ginger-500 flex items-center justify-center text-wabi-ink font-bold">
+        <!-- 左側：與有緣人分享的心意 -->
+        <div class="lg:col-span-5 space-y-3 sm:space-y-4 text-center sm:text-left">
+          <div class="flex items-center justify-center sm:justify-start gap-2.5">
+            <div class="w-9 h-9 rounded-full bg-ginger-500 flex items-center justify-center text-wabi-ink font-bold">
               <i class="fa-solid fa-mortar-pestle"></i>
             </div>
-            <span class="font-serif-title text-2xl font-bold text-white tracking-wider">
+            <span class="font-serif-title text-xl sm:text-2xl font-bold text-white tracking-wider">
               二林傳承 · 竹薑食養
             </span>
           </div>
           
-          <h3 class="font-serif-title text-xl font-bold text-ginger-300 pt-1">與有緣人分享的養生心意</h3>
+          <h3 class="font-serif-title text-base sm:text-xl font-bold text-ginger-300 pt-1">與有緣人分享的養生心意</h3>
           
-          <p class="text-sm text-wabi-cream/70 leading-relaxed max-w-sm mx-auto sm:mx-0">
+          <p class="text-xs sm:text-sm text-wabi-cream/70 leading-relaxed max-w-sm mx-auto sm:mx-0 text-justify sm:text-left">
             承襲彰化二林鹿港師傅的溫暖手藝，結合現代純淨活氫水。我們提供嚴選研磨高山竹薑粉瓶裝，並隨罐附贈完整茶碗蒸食養操作指南。
           </p>
 
-          <div class="pt-2">
-            <span class="text-xs uppercase tracking-wider text-ginger-400 font-semibold block mb-0.5">諮詢提供</span>
-            <p class="text-lg font-serif-title font-bold text-white">洪老師 謹製分享</p>
+          <div class="pt-1">
+            <span class="text-[10px] sm:text-xs uppercase tracking-wider text-ginger-400 font-semibold block">諮詢提供</span>
+            <p class="text-base sm:text-lg font-serif-title font-bold text-white">洪老師 謹製分享</p>
           </div>
         </div>
 
-        <!-- 右側：電話諮詢與線上表單 (7 欄) -->
-        <div class="lg:col-span-7 space-y-6">
+        <!-- 右側：電話諮詢與線上表單 -->
+        <div class="lg:col-span-7 space-y-5">
           <div>
-            <h4 class="font-serif-title text-lg sm:text-xl font-bold text-white mb-2 text-center sm:text-left">立即電話諮詢與訂購</h4>
-            <p class="text-xs sm:text-sm text-wabi-cream/70 mb-5 text-center sm:text-left">歡迎點擊下方電話直接撥打，洪老師將親自為您說明食養細節與協助寄送。</p>
+            <h4 class="font-serif-title text-base sm:text-xl font-bold text-white mb-1.5 text-center sm:text-left">立即電話諮詢與訂購</h4>
+            <p class="text-xs sm:text-sm text-wabi-cream/70 mb-4 text-center sm:text-left">歡迎點擊下方電話直接撥打，洪老師將親自為您說明食養細節與協助寄送。</p>
             
             <!-- 一鍵撥打電話按鈕 -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
-              <a href="tel:0910837253" class="group flex items-center justify-between p-4 rounded-2xl bg-white/5 border border-white/10 hover:border-ginger-500 hover:bg-ginger-500/10 active:bg-ginger-500/20 transition-all active:scale-98">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <a href="tel:0910837253" class="group flex items-center justify-between p-3.5 rounded-2xl bg-white/5 border border-white/10 hover:border-ginger-500 hover:bg-ginger-500/10 active:bg-ginger-500/20 transition-all active:scale-98">
                 <div class="flex items-center gap-3">
-                  <div class="w-10 h-10 rounded-xl bg-ginger-500/20 text-ginger-400 flex items-center justify-center text-lg group-hover:scale-110 transition-transform">
+                  <div class="w-9 h-9 rounded-xl bg-ginger-500/20 text-ginger-400 flex items-center justify-center text-base group-hover:scale-110 transition-transform shrink-0">
                     <i class="fa-solid fa-phone"></i>
                   </div>
                   <div>
-                    <span class="text-xs text-wabi-cream/60 block">專線一（點擊直接通話）</span>
-                    <span class="font-serif-title text-lg font-bold text-white group-hover:text-ginger-300">0910-837-253</span>
+                    <span class="text-[10px] sm:text-xs text-wabi-cream/60 block">專線一（點擊直接撥打）</span>
+                    <span class="font-serif-title text-base sm:text-lg font-bold text-white group-hover:text-ginger-300">0910-837-253</span>
                   </div>
                 </div>
-                <i class="fa-solid fa-chevron-right text-xs text-wabi-cream/40 group-hover:text-ginger-400 group-hover:translate-x-1 transition-all"></i>
+                <i class="fa-solid fa-chevron-right text-xs text-wabi-cream/40 group-hover:text-ginger-400 transition-all"></i>
               </a>
 
-              <a href="tel:0966685576" class="group flex items-center justify-between p-4 rounded-2xl bg-white/5 border border-white/10 hover:border-ginger-500 hover:bg-ginger-500/10 active:bg-ginger-500/20 transition-all active:scale-98">
+              <a href="tel:0966685576" class="group flex items-center justify-between p-3.5 rounded-2xl bg-white/5 border border-white/10 hover:border-ginger-500 hover:bg-ginger-500/10 active:bg-ginger-500/20 transition-all active:scale-98">
                 <div class="flex items-center gap-3">
-                  <div class="w-10 h-10 rounded-xl bg-ginger-500/20 text-ginger-400 flex items-center justify-center text-lg group-hover:scale-110 transition-transform">
+                  <div class="w-9 h-9 rounded-xl bg-ginger-500/20 text-ginger-400 flex items-center justify-center text-base group-hover:scale-110 transition-transform shrink-0">
                     <i class="fa-solid fa-phone"></i>
                   </div>
                   <div>
-                    <span class="text-xs text-wabi-cream/60 block">專線二（點擊直接通話）</span>
-                    <span class="font-serif-title text-lg font-bold text-white group-hover:text-ginger-300">0966-685-576</span>
+                    <span class="text-[10px] sm:text-xs text-wabi-cream/60 block">專線二（點擊直接撥打）</span>
+                    <span class="font-serif-title text-base sm:text-lg font-bold text-white group-hover:text-ginger-300">0966-685-576</span>
                   </div>
                 </div>
-                <i class="fa-solid fa-chevron-right text-xs text-wabi-cream/40 group-hover:text-ginger-400 group-hover:translate-x-1 transition-all"></i>
+                <i class="fa-solid fa-chevron-right text-xs text-wabi-cream/40 group-hover:text-ginger-400 transition-all"></i>
               </a>
             </div>
 
             <!-- 線上表單按鈕 -->
-            <div class="mt-4">
-              <a href="https://forms.google.com" target="_blank" rel="noopener noreferrer" class="w-full inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-ginger-600 hover:bg-ginger-500 active:bg-ginger-700 text-white font-medium rounded-2xl shadow transition-all duration-200 active:scale-98 text-sm sm:text-base">
+            <div class="mt-3.5">
+              <a href="https://forms.google.com" target="_blank" rel="noopener noreferrer" class="w-full inline-flex items-center justify-center gap-2 px-6 py-3 bg-ginger-600 hover:bg-ginger-500 active:bg-ginger-700 text-white font-medium rounded-xl sm:rounded-2xl shadow transition-all active:scale-98 text-xs sm:text-base">
                 <i class="fa-brands fa-google"></i> 填寫線上訂購表單（Google Form）
               </a>
             </div>
@@ -679,7 +719,7 @@
       </div>
 
       <!-- 版權聲明 -->
-      <div class="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-wabi-cream/50 gap-3 text-center sm:text-left">
+      <div class="pt-6 sm:pt-8 flex flex-col sm:flex-row items-center justify-between text-[11px] sm:text-xs text-wabi-cream/50 gap-2 sm:gap-3 text-center sm:text-left">
         <p>© 2026 二林傳承・竹薑茶碗蒸 版權所有｜純天然膳食料理</p>
         <p>本膳食為日常養生食補，若有身體疾患請諮詢專業醫師。</p>
       </div>
@@ -691,7 +731,7 @@
   <!-- 8. 【手機專屬底部懸浮快捷行動列 (Mobile Sticky Action Bar)】 -->
   <!-- ========================================================= -->
   <div class="fixed bottom-0 left-0 right-0 z-40 md:hidden bg-white/95 backdrop-blur-md border-t border-wabi-border shadow-2xl px-3 py-2 pb-safe">
-    <div class="flex items-center gap-2.5 max-w-md mx-auto">
+    <div class="flex items-center gap-2 max-w-md mx-auto">
       <a href="tel:0910837253" class="flex-1 flex items-center justify-center gap-1.5 py-2.5 bg-ginger-100 active:bg-ginger-200 text-ginger-900 font-bold rounded-xl text-xs border border-ginger-300 transition-colors">
         <i class="fa-solid fa-phone text-ginger-700"></i>
         <span>撥打 0910</span>
