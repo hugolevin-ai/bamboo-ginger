@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="zh-TW" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>二林傳承・竹薑粉 | 驅寒培本的養生聖品</title>
+  <meta name="description" content="彰化二林老手藝祖傳補身古方，高山竹薑 × 科技氫氣水，溫中散寒、行氣活血，喚醒身體自癒活力。">
+  
+  <!-- Google Fonts: Noto Serif TC (典雅明體) & Noto Sans TC -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Noto+Serif+TC:wght@400;600;700;900&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            ginger: {
+              50: '#FDF9F0',
+              100: '#FBF2DD',
+              200: '#F5E2B6',
+              300: '#ECCC89',
+              400: '#E0B259',
+              500: '#D49B35', // 主題暖薑黃
+              600: '#B87E25',
+              700: '#8F5E1C',
+              800: '#6A4418',
+              900: '#482D10',
+            },
+            earth: {
+              cream: '#FAF7F2',
+              sand: '#F3EDE2',
+              border: '#E8DEC8',
+              muted: '#7A7265',
+              dark: '#2B2621', // 深墨色
+            }
+          },
+          fontFamily: {
+            serif: ['"Noto Serif TC"', 'serif'],
+            sans: ['"Noto Sans TC"', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      background-color: #FAF7F2;
+      color: #2B2621;
+      font-family: 'Noto Sans TC', sans-serif;
+    }
+    .font-serif-title {
+      font-family: 'Noto Serif TC', serif;
+    }
+    .pattern-bg {
+      background-image: radial-gradient(#D49B35 0.75px, transparent 0.75px);
+      background-size: 24px 24px;
+      opacity: 0.15;
+    }
+  </style>
+</head>
+<body class="antialiased selection:bg-ginger-200 selection:text-ginger-900 flex flex-col min-h-screen">
+
+  <!-- ========================================================= -->
+  <!-- 1. 【導覽列 (Navbar)】 -->
+  <!-- ========================================================= -->
+  <header class="sticky top-0 z-50 bg-[#FAF7F2]/95 backdrop-blur-md border-b border-earth-border/60 transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20">
+        <!-- Logo / 品牌名 -->
+        <a href="#" class="flex items-center gap-3 group">
+          <div class="w-10 h-10 rounded-full bg-ginger-500/10 border border-ginger-500/30 flex items-center justify-center text-ginger-600 transition-transform group-hover:scale-105">
+            <i class="fa-solid fa-seedling text-lg"></i>
+          </div>
+          <div class="flex flex-col">
+            <span class="font-serif-title text-xl sm:text-2xl font-bold tracking-wider text-earth-dark group-hover:text-ginger-700 transition-colors">
+              二林傳承・竹薑粉
+            </span>
+            <span class="text-[10px] tracking-widest text-earth-muted uppercase">Erlin Heritage Ginger</span>
+          </div>
+        </a>
+
+        <!-- 桌機版導航 -->
+        <nav class="hidden md:flex items-center space-x-7 text-sm font-medium text-earth-dark">
+          <a href="#story" class="hover:text-ginger-600 transition-colors py-1">品牌故事</a>
+          <a href="#features" class="hover:text-ginger-600 transition-colors py-1">產品特點</a>
+          <a href="#recipe" class="hover:text-ginger-600 transition-colors py-1">茶碗蒸食譜</a>
+          <a href="#ingredients" class="hover:text-ginger-600 transition-colors py-1">成分分析</a>
+          <a href="#notice" class="hover:text-ginger-600 transition-colors py-1">建議事項</a>
+          <a href="#order" class="ml-2 inline-flex items-center justify-center px-4 py-2 border border-ginger-600 text-ginger-700 bg-ginger-50 hover:bg-ginger-500 hover:text-white rounded-full transition-all duration-200 shadow-sm">
+            <i class="fa-solid fa-phone mr-1.5 text-xs"></i> 立即訂購
+          </a>
+        </nav>
+
+        <!-- 手機版漢堡按鈕 -->
+        <div class="flex md:hidden">
+          <button id="mobile-menu-btn" type="button" class="text-earth-dark hover:text-ginger-600 focus:outline-none p-2" aria-label="切換選單">
+            <i id="menu-icon" class="fa-solid fa-bars text-xl"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 手機版展開選單 -->
+    <div id="mobile-menu" class="hidden md:hidden border-b border-earth-border bg-[#FAF7F2] px-4 pt-3 pb-6 space-y-3 text-base font-medium">
+      <a href="#story" class="block px-3 py-2 rounded-lg hover:bg-ginger-100/60 text-earth-dark mobile-link">品牌故事</a>
+      <a href="#features" class="block px-3 py-2 rounded-lg hover:bg-ginger-100/60 text-earth-dark mobile-link">產品特點</a>
+      <a href="#recipe" class="block px-3 py-2 rounded-lg hover:bg-ginger-100/60 text-earth-dark mobile-link">茶碗蒸食譜</a>
+      <a href="#ingredients" class="block px-3 py-2 rounded-lg hover:bg-ginger-100/60 text-earth-dark mobile-link">成分分析</a>
+      <a href="#notice" class="block px-3 py-2 rounded-lg hover:bg-ginger-100/60 text-earth-dark mobile-link">建議事項</a>
+      <a href="#order" class="block text-center mt-3 px-4 py-2.5 bg-ginger-500 text-white font-semibold rounded-full shadow hover:bg-ginger-600 mobile-link">
+        <i class="fa-solid fa-phone mr-1.5"></i> 立即訂購
+      </a>
+    </div>
+  </header>
+
+  <!-- ========================================================= -->
+  <!-- 2. 【首頁橫幅 (Hero Banner)】 -->
+  <!-- ========================================================= -->
+  <section class="relative overflow-hidden pt-12 pb-20 md:py-24">
+    <!-- 背景裝飾點綴 -->
+    <div class="absolute inset-0 pattern-bg pointer-events-none"></div>
+    <div class="absolute -top-24 -right-24 w-96 h-96 bg-ginger-200/40 rounded-full blur-3xl pointer-events-none"></div>
+    <div class="absolute -bottom-24 -left-24 w-96 h-96 bg-ginger-100/60 rounded-full blur-3xl pointer-events-none"></div>
+
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+        
+        <!-- 左側文案區 (7 欄) -->
+        <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+          <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-ginger-100 border border-ginger-300 text-ginger-800 text-xs sm:text-sm font-medium tracking-wide">
+            <span class="w-2 h-2 rounded-full bg-ginger-500 animate-pulse"></span>
+            二林小鎮祖傳秘方 × 現代自製氫氣水
+          </div>
+
+          <h1 class="font-serif-title text-3xl sm:text-4xl md:text-5xl font-black text-earth-dark leading-tight tracking-tight">
+            傳承老手藝，<br class="hidden sm:inline">
+            <span class="text-ginger-700 underline decoration-ginger-300 decoration-wavy decoration-2 underline-offset-8">驅寒培本</span>的養生聖品
+          </h1>
+
+          <p class="text-lg sm:text-xl text-earth-muted font-light leading-relaxed max-w-2xl mx-auto lg:mx-0">
+            高山竹薑 × 科技氫氣水，喚醒身體自癒活力。<br>
+            以溫熱之力通達經絡，為常年畏寒、疲勞虛弱的身軀，注入純淨的初陽生機。
+          </p>
+
+          <!-- 關鍵特點微標籤 -->
+          <div class="flex flex-wrap justify-center lg:justify-start gap-4 pt-2 text-xs sm:text-sm text-earth-dark/80">
+            <span class="flex items-center gap-1.5"><i class="fa-solid fa-circle-check text-ginger-600"></i> 無防腐劑化學添加</span>
+            <span class="flex items-center gap-1.5"><i class="fa-solid fa-circle-check text-ginger-600"></i> 原生高山竹薑細研</span>
+            <span class="flex items-center gap-1.5"><i class="fa-solid fa-circle-check text-ginger-600"></i> 台灣在地純工精製</span>
+          </div>
+
+          <!-- CTA 按鈕群 -->
+          <div class="pt-4 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
+            <a href="#recipe" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 bg-ginger-600 hover:bg-ginger-700 text-white font-medium rounded-full shadow-lg hover:shadow-ginger-500/20 transition-all duration-200 hover:-translate-y-0.5">
+              <i class="fa-solid fa-bowl-food"></i> 了解茶碗蒸配方
+            </a>
+            <a href="#order" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 bg-white hover:bg-ginger-50 text-earth-dark border border-earth-border font-medium rounded-full shadow-sm hover:border-ginger-400 transition-all duration-200">
+              <i class="fa-solid fa-phone text-ginger-600"></i> 立即電話訂購
+            </a>
+          </div>
+        </div>
+
+        <!-- 右側產品圖片區 (5 欄) -->
+        <div class="lg:col-span-5 flex justify-center">
+          <div class="relative w-full max-w-md">
+            <!-- 裝飾底座光暈 -->
+            <div class="absolute inset-0 bg-gradient-to-tr from-ginger-400/30 to-amber-200/40 rounded-3xl transform rotate-3 filter blur-xl"></div>
+            
+            <!-- 產品外框容器 -->
+            <div class="relative rounded-3xl overflow-hidden border border-earth-border bg-white shadow-2xl p-3">
+              <div class="aspect-square rounded-2xl overflow-hidden bg-earth-sand relative flex items-center justify-center group">
+                <!-- 支援 product.jpg，若無則自動 fallback 至高畫質自然竹薑意境照 -->
+                <img 
+                  src="product.jpg" 
+                  alt="二林傳承高山竹薑粉" 
+                  class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1615485290382-441e4d049cb5?auto=format&fit=crop&w=800&q=80';"
+                >
+                <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-60"></div>
+                <div class="absolute bottom-4 left-4 right-4 text-white p-3 rounded-xl backdrop-blur-md bg-black/30 border border-white/20">
+                  <div class="flex items-center justify-between">
+                    <div>
+                      <p class="font-serif-title text-base font-bold">極品研磨・竹薑粉</p>
+                      <p class="text-xs text-earth-sand/90">透明黑蓋質感瓶裝 / 養身代餐首選</p>
+                    </div>
+                    <span class="text-xs bg-ginger-500 text-white px-2.5 py-1 rounded-full font-semibold">特撰良品</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================= -->
+  <!-- 3. 【品牌故事 (緣起)】 -->
+  <!-- ========================================================= -->
+  <section id="story" class="py-20 bg-earth-sand/50 border-y border-earth-border/60 relative">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-2xl mx-auto mb-16">
+        <span class="text-xs uppercase tracking-widest text-ginger-700 font-semibold">Heritage Story</span>
+        <h2 class="font-serif-title text-3xl sm:text-4xl font-bold text-earth-dark mt-2 mb-4">
+          源自小鎮跌打古方，守護三代的溫潤初心
+        </h2>
+        <div class="w-16 h-1 bg-ginger-500 mx-auto rounded-full"></div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-10 items-center">
+        <!-- 故事左側圖片/視覺標籤 -->
+        <div class="md:col-span-5 space-y-4">
+          <div class="relative rounded-2xl overflow-hidden shadow-lg border border-earth-border">
+            <img 
+              src="https://images.unsplash.com/photo-1540420773420-3366772f4999?auto=format&fit=crop&w=800&q=80" 
+              alt="自然生機與純淨竹薑" 
+              class="w-full h-80 object-cover"
+            >
+            <div class="absolute inset-0 bg-earth-dark/20"></div>
+            <div class="absolute bottom-4 left-4 text-white">
+              <span class="text-xs bg-ginger-600/90 backdrop-blur-sm px-2.5 py-1 rounded-md">彰化二林記憶</span>
+              <p class="font-serif-title text-lg font-bold mt-1">「鹿港師仔」祖傳古法</p>
+            </div>
+          </div>
+          <div class="p-4 bg-white/70 border border-earth-border rounded-xl text-xs sm:text-sm text-earth-muted leading-relaxed">
+            <i class="fa-solid fa-quote-left text-ginger-500 mr-1.5"></i>
+            老一輩常說：根基虛弱，百病易生。唯有打通循環、逐退沉寒，正氣自存。
+          </div>
+        </div>
+
+        <!-- 故事右側詳細段落 -->
+        <div class="md:col-span-7 space-y-6 text-earth-dark leading-relaxed">
+          <div class="border-l-4 border-ginger-500 pl-4 py-1">
+            <h3 class="font-serif-title text-xl font-bold text-ginger-900">
+              老手藝跌打損傷古方，尋回身體根本之陽
+            </h3>
+          </div>
+
+          <p class="text-justify text-earth-muted">
+            這套方子的起點，源自彰化二林小鎮專精跌打損傷的名醫「<span class="font-semibold text-earth-dark">鹿港師仔</span>」。早年鄉里間勞動辛苦、體質內損受寒，老師傅便以高山老竹薑輔以獨家辛溫藥理，為病人固元培本、活血通絡。
+          </p>
+
+          <p class="text-justify text-earth-muted">
+            昔日這道古方工序極為講究，甚至依循天時採集「子午水」細火慢煎，往往非一般家庭能日日烹煮。如今，我們結合了現代科技「<span class="font-semibold text-ginger-800">台灣自製高溶氫水機</span>」，以富含微米氫分子的高活性水質取代古時不易取得的活泉，不僅保留古方精髓，更能深層帶動竹薑成分吸收，讓珍貴的養生古方真正輕鬆走入尋常百姓家。
+          </p>
+
+          <!-- 見證小卡 -->
+          <div class="bg-white rounded-2xl p-5 border border-ginger-200/80 shadow-sm flex items-start gap-4">
+            <div class="w-12 h-12 rounded-full bg-ginger-100 flex-shrink-0 flex items-center justify-center text-ginger-700 text-xl font-serif">
+              <i class="fa-solid fa-heart-pulse"></i>
+            </div>
+            <div class="space-y-1">
+              <h4 class="font-serif-title font-bold text-earth-dark text-base">真實見證：退休返鄉嫂子的轉變</h4>
+              <p class="text-sm text-earth-muted leading-normal">
+                多年來飽受四肢冰冷、精神不濟之苦的退休嫂子，返鄉後每日固定享用一碗「竹薑茶碗蒸」。持續食用半年後，體內寒氣漸消，手腳回暖，整個人紅光滿面、神采奕奕，成為這道秘方最溫暖的真實見證。
+              </p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================================= -->
+  <!-- 4. 【獨家養生：竹薑茶碗蒸說明書】 -->
+  <!-- ========================================================= -->
+  <section id="recipe" class="py-20 relative overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-2xl mx-auto mb-16">
+        <span class="text-xs uppercase tracking-widest text-ginger-700 font-semibold">Signature Recipe</span>
+        <h2 class="font-serif-title text-3xl sm:text-4xl font-bold text-earth-dark mt-2 mb-4">
+          獨家養生：竹薑茶碗蒸說明書
+        </h2>
+        <p class="text-earth-muted text-sm sm:text-base">
+          以東方溫潤食療為底，融入現代營養學概念。如同一碗東方專屬的「溫潤版防彈早餐」，為一天注入飽滿元氣。
+        </p>
+        <div class="w-16 h-1 bg-ginger-500 mx-auto rounded-full mt-4"></div>
+      </div>
+
+      <!-- 配方與防彈概念卡片 -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch mb-12">
+        
+        <!-- 左側：黃金比例配方卡 (5 欄) -->
+        <div class="lg:col-span-5 bg-white rounded-3xl p-6 sm:p-8 border border-earth-border shadow-lg flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between pb-4 border-b border-earth-border">
+              <h3 class="font-serif-title text-xl font-bold text-ginger-900 flex items-center gap-2">
+                <i class="fa-solid fa-scale-balanced text-ginger-600"></i> 黃金配方比例
+              </h3>
+              <span class="text-xs bg-ginger-100 text-ginger-800 px-3 py-1 rounded-full font-medium">每日一人份</span>
+            </div>
+
+            <div class="mt-6 space-y-4">
+              <!-- 材料 1 -->
+              <div class="flex items-center justify-between p-3.5 rounded-xl bg-earth-sand/40 border border-earth-border/60">
+                <div class="flex items-center gap-3">
+                  <div class="w-8 h-8 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center font-bold text-sm">1</div>
+                  <span class="font-medium text-earth-dark">科技氫氣水</span>
+                </div>
+                <span class="font-serif-title font-bold text-ginger-700 text-lg">100 cc</span>
+              </div>
+
+              <!-- 材料 2 -->
+              <div class="flex items-center justify-between p-3.5 rounded-xl bg-earth-sand/40 border border-earth-border/60">
+                <div class="flex items-center gap-3">
+                  <div class="w-8 h-8 rounded-lg bg-ginger-100 text-ginger-700 flex items-center justify-center font-bold text-sm">2</div>
+                  <span class="font-medium text-earth-dark">精選竹薑粉</span>
+                </div>
+                <span class="font-serif-title font-bold text-ginger-700 text-lg">3 ~ 5 g</span>
+              </div>
+
+              <!-- 材料 3 -->
+              <div class="flex items-center justify-between p-3.5 rounded-xl bg-earth-sand/40 border border-earth-border/60">
+                <div class="flex items-center gap-3">
+                  <div class="w-8 h-8 rounded-lg bg-amber-50 text-amber-600 flex items-center justify-center font-bold text-sm">3</div>
+                  <span class="font-medium text-earth-dark">低溫初榨油 (橄欖/苦茶油)</span>
+                </div>
+                <span class="font-serif-title font-bold text-ginger-700 text-lg">10 cc</span>
+              </div>
+
+              <!-- 材料 4 -->
+              <div class="flex items-center justify-between p-3.5 rounded-xl bg-earth-sand/40 border border-earth-border/60">
+                <div class="flex items-center gap-3">
+                  <div class="w-8 h-8 rounded-lg bg-orange-50 text-orange-600 flex items-center justify-center font-bold text-sm">4</div>
+                  <span class="font-medium text-earth-dark">新鮮健康雞蛋</span>
+                </div>
+                <span class="font-serif-title font-bold text-ginger-700 text-lg">1 顆</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-6 pt-4 border-t border-earth-border/60 flex items-center gap-2 text-xs text-earth-muted">
+            <i class="fa-solid fa-circle-info text-ginger-500"></i>
+            可依個人耐受程度調整竹薑粉至 3g 循序漸進。
+          </div>
+        </div>
+
+        <!-- 右側：料理步驟與防彈概念 (7 欄) -->
+        <div class="lg:col-span-7 space-y-6 flex flex-col justify-between">
+          
+          <!-- 料理 3 步驟 -->
+          <div class="bg-white rounded-3xl p-6 sm:p-8 border border-earth-border shadow-lg space-y-6">
+            <h3 class="font-serif-title text-xl font-bold text-earth-dark flex items-center gap-2">
+              <i class="fa-solid fa-utensils text-ginger-600"></i> 三分鐘輕鬆上桌步驟
+            </h3>
+
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+              <div class="p-4 rounded-2xl bg-earth-cream border border-earth-border text-center space-y-2">
+                <div class="w-10 h-10 mx-auto rounded-full bg-ginger-500 text-white flex items-center justify-center font-bold">
+                  01
+                </div>
+                <h4 class="font-bold text-earth-dark text-sm">均勻打勻</h4>
+                <p class="text-xs text-earth-muted">將蛋打散，加入氫氣水100cc與竹薑粉3~5g，攪拌至無顆粒。</p>
+              </div>
+
+              <div class="p-4 rounded-2xl bg-earth-cream border border-earth-border text-center space-y-2">
+                <div class="w-10 h-10 mx-auto rounded-full bg-ginger-500 text-white flex items-center justify-center font-bold">
+                  02
+                </div>
+                <h4 class="font-bold text-earth-dark text-sm">電鍋溫蒸</h4>
+                <p class="text-xs text-earth-muted">外鍋放半杯水，鍋蓋留一小縫，蒸約 10~12 分鐘至蛋液凝固滑嫩。</p>
+              </div>
+
+              <div class="p-4 rounded-2xl bg-earth-cream border border-earth-border text-center space-y-2">
+                <div class="w-10 h-10 mx-auto rounded-full bg-ginger-500 text-white flex items-center justify-center font-bold">
+                  03
+                </div>
+                <h4 class="font-bold text-earth-dark text-sm">淋好油品嚐</h4>
+                <p class="text-xs text-earth-muted">出鍋後淋上 10cc 低溫初榨好油，香氣四溢，溫熱細嚼入肚。</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- 對標「防彈咖啡」概念對比卡 -->
+          <div class="bg-gradient-to-r from-ginger-900 to-earth-dark rounded-3xl p-6 sm:p-8 text-white shadow-xl relative overflow-hidden">
+            <div class="absolute -right-6 -bottom-6 opacity-10 text-9xl">
+              <i class="fa-solid fa-shield-halved"></i>
+            </div>
+            <div class="relative z-10 space-y-3">
+              <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-ginger-500/20 text-ginger-300 text-xs font-semibold border border-ginger-400/30">
+                <i class="fa-solid fa-bolt"></i> 概念對比：東方升級版「防彈理念」
+              </div>
+              <h4 class="font-serif-title text-xl font-bold text-amber-100">
+                為何竹薑茶碗蒸比防彈咖啡更適合東方體質？
+              </h4>
+              <p class="text-sm text-gray-200 leading-relaxed">
+                西方防彈咖啡以黑咖啡搭配油脂，胃寒或心悸者易感刺激。而<strong>「竹薑茶碗蒸」</strong>融合優質好油、蛋黃卵磷脂與高抗氧化氫分子，並以竹薑的辛溫行氣替代咖啡因，<strong>空腹代餐不刺激、溫和飽足、養胃暖胃</strong>，更符合東方人溫補養生的體質需求。
+              </p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================================= -->
+  <!-- 5. 【四大核心成分解析 (四欄卡片)】 -->
+  <!-- ========================================================= -->
+  <section id="ingredients" class="py-20 bg-earth-sand/40 border-t border-earth-border/60">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-2xl mx-auto mb-16">
+        <span class="text-xs uppercase tracking-widest text-ginger-700 font-semibold">Ingredients Deep Dive</span>
+        <h2 class="font-serif-title text-3xl sm:text-4xl font-bold text-earth-dark mt-2 mb-4">
+          四大核心成分・深層共振
+        </h2>
+        <p class="text-earth-muted text-sm sm:text-base">
+          嚴選天然純淨本源，科學與古法智慧的極致交融。
+        </p>
+        <div class="w-16 h-1 bg-ginger-500 mx-auto rounded-full mt-4"></div>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        
+        <!-- 卡片 1: 氫氣水 -->
+        <div class="bg-white rounded-3xl p-6 border border-earth-border shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 flex flex-col justify-between">
+          <div>
+            <div class="w-14 h-14 rounded-2xl bg-blue-50 text-blue-600 flex items-center justify-center text-2xl mb-5 shadow-sm">
+              <i class="fa-solid fa-droplet"></i>
+            </div>
+            <h3 class="font-serif-title text-xl font-bold text-earth-dark mb-2">科技氫氣水</h3>
+            <span class="text-xs inline-block px-2.5 py-0.5 rounded-full bg-blue-100/70 text-blue-700 font-medium mb-3">高分子生物活性</span>
+            <p class="text-sm text-earth-muted leading-relaxed">
+              分子氫為最小的抗氧化分子，具備優異的抗氧化、抗發炎與運動疲勞恢復功效，能深層穿透細胞屏障，帶動養分迅速吸收。
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-earth-border/60 text-xs text-blue-600 font-medium flex items-center gap-1">
+            <i class="fa-solid fa-circle-check"></i> 代替古傳子午甘泉
+          </div>
+        </div>
+
+        <!-- 卡片 2: 竹薑粉 -->
+        <div class="bg-white rounded-3xl p-6 border border-earth-border shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 flex flex-col justify-between">
+          <div>
+            <div class="w-14 h-14 rounded-2xl bg-ginger-50 text-ginger-600 flex items-center justify-center text-2xl mb-5 shadow-sm">
+              <i class="fa-solid fa-fire-flame-curved"></i>
+            </div>
+            <h3 class="font-serif-title text-xl font-bold text-earth-dark mb-2">高山竹薑粉</h3>
+            <span class="text-xs inline-block px-2.5 py-0.5 rounded-full bg-ginger-100 text-ginger-800 font-medium mb-3">溫中散寒・行氣升陽</span>
+            <p class="text-sm text-earth-muted leading-relaxed">
+              相較普通生薑，高山竹薑薑辣素與薑烯酚含量倍增。溫中散寒、行氣活血、通利經絡，專門調理胃寒受涼與常年怕冷體質。
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-earth-border/60 text-xs text-ginger-700 font-medium flex items-center gap-1">
+            <i class="fa-solid fa-circle-check"></i> 二林祖傳名師古方核心
+          </div>
+        </div>
+
+        <!-- 卡片 3: 好油 (初榨油) -->
+        <div class="bg-white rounded-3xl p-6 border border-earth-border shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 flex flex-col justify-between">
+          <div>
+            <div class="w-14 h-14 rounded-2xl bg-amber-50 text-amber-600 flex items-center justify-center text-2xl mb-5 shadow-sm">
+              <i class="fa-solid fa-bottle-droplet"></i>
+            </div>
+            <h3 class="font-serif-title text-xl font-bold text-earth-dark mb-2">低溫初榨好油</h3>
+            <span class="text-xs inline-block px-2.5 py-0.5 rounded-full bg-amber-100 text-amber-800 font-medium mb-3">單元不飽和脂肪酸</span>
+            <p class="text-sm text-earth-muted leading-relaxed">
+              選用特級冷壓初榨油（如橄欖油、苦茶油），零反式脂肪。富含單元不飽和脂肪酸，提供大腦持久穩定能量，協助脂溶性營養完整吸收。
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-earth-border/60 text-xs text-amber-700 font-medium flex items-center gap-1">
+            <i class="fa-solid fa-circle-check"></i> 乾淨燃燒・延長飽足感
+          </div>
+        </div>
+
+        <!-- 卡片 4: 雞蛋 -->
+        <div class="bg-white rounded-3xl p-6 border border-earth-border shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 flex flex-col justify-between">
+          <div>
+            <div class="w-14 h-14 rounded-2xl bg-orange-50 text-orange-600 flex items-center justify-center text-2xl mb-5 shadow-sm">
+              <i class="fa-solid fa-egg"></i>
+            </div>
+            <h3 class="font-serif-title text-xl font-bold text-earth-dark mb-2">新鮮優質雞蛋</h3>
+            <span class="text-xs inline-block px-2.5 py-0.5 rounded-full bg-orange-100 text-orange-800 font-medium mb-3">完美蛋白質・調和陰陽</span>
+            <p class="text-sm text-earth-muted leading-relaxed">
+              全營養食材之王，提供完整人體必需胺基酸、維生素D、膽鹼與葉黃素。以蛋之甘平中和竹薑之辛烈，達至陰陽調和、滋養潤燥。
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-earth-border/60 text-xs text-orange-700 font-medium flex items-center gap-1">
+            <i class="fa-solid fa-circle-check"></i> 營養載體・口感滑順
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================================= -->
+  <!-- 6. 【專家建議與注意事項】 -->
+  <!-- ========================================================= -->
+  <section id="notice" class="py-20 relative">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="bg-white rounded-3xl border border-earth-border shadow-xl p-8 sm:p-12 space-y-10">
+        
+        <!-- 專家建議標題 -->
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-earth-border">
+          <div>
+            <span class="text-xs uppercase tracking-widest text-ginger-700 font-semibold">Guidance & Caution</span>
+            <h2 class="font-serif-title text-2xl sm:text-3xl font-bold text-earth-dark mt-1">
+              專家調養建議與貼心叮嚀
+            </h2>
+          </div>
+          <span class="inline-flex items-center gap-2 px-3 py-1 bg-ginger-50 border border-ginger-200 text-ginger-800 text-xs rounded-full font-medium">
+            <i class="fa-solid fa-shield-heart text-ginger-600"></i> 食物共振・培本固源
+          </span>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          
+          <!-- 調養心法 -->
+          <div class="space-y-4">
+            <h3 class="font-serif-title text-lg font-bold text-earth-dark flex items-center gap-2">
+              <i class="fa-solid fa-seedling text-ginger-600"></i> 食物共振效應與漸進調養
+            </h3>
+            <p class="text-sm text-earth-muted leading-relaxed">
+              中醫養生強調「正氣存內，邪不可干」。竹薑並非猛烈燥熱之物，而是透過與高活性水、蛋白質、優質油脂在體內產生<strong>食物共振效應</strong>，慢慢逼散陳年積寒。建議連續食用 4~8 週，感受體溫與晨起精神的微細正向轉變。
+            </p>
+          </div>
+
+          <!-- 貼心提醒與禁忌 -->
+          <div class="space-y-4">
+            <h3 class="font-serif-title text-lg font-bold text-amber-800 flex items-center gap-2">
+              <i class="fa-solid fa-triangle-exclamation text-amber-600"></i> 貼心提醒與使用禁忌
+            </h3>
+            <ul class="text-sm text-earth-muted space-y-2.5">
+              <li class="flex items-start gap-2">
+                <i class="fa-solid fa-check text-ginger-600 mt-1 flex-shrink-0 text-xs"></i>
+                <span><strong>非醫療藥品</strong>：本品為民間優良營養膳食土方，若身體有急症或慢性重大病灶，仍請遵照正規醫療就診。</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <i class="fa-solid fa-check text-ginger-600 mt-1 flex-shrink-0 text-xs"></i>
+                <span><strong>陰虛內熱者酌量</strong>：若近期經常口乾舌燥、咽喉痛、便秘上火或正在發燒者，請減少竹薑份量或暫停使用。</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <i class="fa-solid fa-check text-ginger-600 mt-1 flex-shrink-0 text-xs"></i>
+                <span><strong>孕婦與幼兒</strong>：孕婦體質特殊，建議在專業中醫師或營養師指導下適量享用。</span>
+              </li>
+            </ul>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================================= -->
+  <!-- 7. 【訂購與聯繫方式 (Footer / Contact)】 -->
+  <!-- ========================================================= -->
+  <footer id="order" class="bg-earth-dark text-earth-sand pt-16 pb-12 border-t border-ginger-900/40">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 pb-12 border-b border-white/10">
+        
+        <!-- 品牌簡介 (5 欄) -->
+        <div class="lg:col-span-5 space-y-4">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-full bg-ginger-500 flex items-center justify-center text-earth-dark font-bold">
+              <i class="fa-solid fa-mortar-pestle"></i>
+            </div>
+            <span class="font-serif-title text-2xl font-bold text-white tracking-wider">
+              二林傳承・竹薑粉
+            </span>
+          </div>
+          <p class="text-sm text-earth-sand/70 leading-relaxed max-w-sm">
+            承襲彰化二林鹿港師仔跌打補身古法，結合現代富氫活性好水。願一盞溫熱的竹薑茶碗蒸，守護您與全家人的冬日元氣。
+          </p>
+          <div class="pt-2">
+            <span class="text-xs uppercase tracking-wider text-ginger-400 font-semibold block mb-1">配方提供者</span>
+            <p class="text-lg font-serif-title font-bold text-white">洪老師 謹製</p>
+          </div>
+        </div>
+
+        <!-- 聯繫與訂購方式 (7 欄) -->
+        <div class="lg:col-span-7 flex flex-col justify-between space-y-6">
+          <div>
+            <h3 class="font-serif-title text-xl font-bold text-white mb-2">立即諮詢與訂購</h3>
+            <p class="text-sm text-earth-sand/70 mb-6">歡迎來電洽詢訂購，或透過線上表單預約，我們將有專人為您服務寄送。</p>
+            
+            <!-- 電話一鍵撥打按鈕 -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <a href="tel:0910837253" class="group flex items-center justify-between p-4 rounded-2xl bg-white/5 border border-white/10 hover:border-ginger-500 hover:bg-ginger-500/10 transition-all">
+                <div class="flex items-center gap-3">
+                  <div class="w-10 h-10 rounded-xl bg-ginger-500/20 text-ginger-400 flex items-center justify-center group-hover:scale-110 transition-transform">
+                    <i class="fa-solid fa-phone"></i>
+                  </div>
+                  <div>
+                    <span class="text-xs text-earth-sand/60 block">專線一（一鍵通話）</span>
+                    <span class="font-serif-title text-lg font-bold text-white group-hover:text-ginger-300">0910-837-253</span>
+                  </div>
+                </div>
+                <i class="fa-solid fa-arrow-right text-xs text-earth-sand/40 group-hover:text-ginger-400 group-hover:translate-x-1 transition-all"></i>
+              </a>
+
+              <a href="tel:0966685576" class="group flex items-center justify-between p-4 rounded-2xl bg-white/5 border border-white/10 hover:border-ginger-500 hover:bg-ginger-500/10 transition-all">
+                <div class="flex items-center gap-3">
+                  <div class="w-10 h-10 rounded-xl bg-ginger-500/20 text-ginger-400 flex items-center justify-center group-hover:scale-110 transition-transform">
+                    <i class="fa-solid fa-phone"></i>
+                  </div>
+                  <div>
+                    <span class="text-xs text-earth-sand/60 block">專線二（一鍵通話）</span>
+                    <span class="font-serif-title text-lg font-bold text-white group-hover:text-ginger-300">0966-685-576</span>
+                  </div>
+                </div>
+                <i class="fa-solid fa-arrow-right text-xs text-earth-sand/40 group-hover:text-ginger-400 group-hover:translate-x-1 transition-all"></i>
+              </a>
+            </div>
+
+            <!-- Google 表單訂購按鈕 -->
+            <div class="mt-4">
+              <a href="https://forms.google.com" target="_blank" rel="noopener noreferrer" class="w-full inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-ginger-600 hover:bg-ginger-500 text-white font-medium rounded-2xl shadow transition-all duration-200">
+                <i class="fa-brands fa-google"></i> 前往 Google 表單線上填單訂購
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- 版權聲明 -->
+      <div class="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-earth-sand/50 gap-4">
+        <p>© 2026 二林傳承・竹薑粉. 版權所有 All Rights Reserved.</p>
+        <p>本網站內容供健康膳食養生參考，不能取代專業醫療診斷。</p>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- 浮動電話快速聯絡鈕 (手機專屬快捷按鈕) -->
+  <div class="fixed bottom-6 right-6 z-40 md:hidden">
+    <a href="tel:0910837253" class="w-14 h-14 bg-ginger-600 text-white rounded-full shadow-2xl flex items-center justify-center text-xl hover:bg-ginger-500 focus:ring-4 focus:ring-ginger-300 transition-all active:scale-95" aria-label="撥打電話訂購">
+      <i class="fa-solid fa-phone-volume"></i>
+    </a>
+  </div>
+
+  <!-- JavaScript: 手機版選單切換與錨點平滑點擊處理 -->
+  <script>
+    const menuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const menuIcon = document.getElementById('menu-icon');
+    const mobileLinks = document.querySelectorAll('.mobile-link');
+
+    menuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+      if (mobileMenu.classList.contains('hidden')) {
+        menuIcon.classList.remove('fa-xmark');
+        menuIcon.classList.add('fa-bars');
+      } else {
+        menuIcon.classList.remove('fa-bars');
+        menuIcon.classList.add('fa-xmark');
+      }
+    });
+
+    mobileLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+        menuIcon.classList.remove('fa-xmark');
+        menuIcon.classList.add('fa-bars');
+      });
+    });
+  </script>
+</body>
+</html>
